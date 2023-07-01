@@ -1,0 +1,25 @@
+getgenv().AutoHatch = false;
+
+function Open()
+    spawn(function()
+        while AutoHatch == true do
+            local args = {[1] = 7000020,[2] = 4}
+            game:GetService("ReplicatedStorage"):WaitForChild("Tool"):WaitForChild("DrawUp"):WaitForChild("Msg"):WaitForChild("DrawHero"):InvokeServer(unpack(args))
+            wait()
+        end
+    end)
+end
+
+local library = loadstring(game:HttpGet(('https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/wall%20v3')))()
+
+local w = library:CreateWindow("Anime Catching Simulator")
+
+local a = w:CreateFolder("Hatch")
+
+a:Toggle("Auto Hatch",function(bool)
+    getgenv().AutoHatch = bool
+    print('Auto Place Blocks is: ', bool)
+    if bool then
+        Open();
+    end
+end)
