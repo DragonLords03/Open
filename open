@@ -1,4 +1,5 @@
 getgenv().AutoHatch = false;
+getgenv().AutoClick = false;
 
 function Open()
     spawn(function()
@@ -10,16 +11,35 @@ function Open()
     end)
 end
 
+function Click()
+    spawn(function()
+        while AutoClick == true do
+            game:GetService("ReplicatedStorage").System.SystemClick.Click:FireServer()
+            wait()
+        end
+    end)
+end
+
 local library = loadstring(game:HttpGet(('https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/wall%20v3')))()
 
 local w = library:CreateWindow("Anime Catching Simulator")
 
 local a = w:CreateFolder("Hatch")
 
+local b = w:CreateFolder("Plaza ")
+
 a:Toggle("Auto Hatch",function(bool)
     getgenv().AutoHatch = bool
     print('Auto Place Blocks is: ', bool)
     if bool then
         Open();
+    end
+end)
+
+b:Toggle("Auto Click",function(bool)
+    getgenv().AutoClick = bool
+    print('Auto Place Blocks is: ', bool)
+    if bool then
+        Click();
     end
 end)
