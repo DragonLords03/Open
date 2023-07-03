@@ -1,4 +1,4 @@
-getgenv().AutoHatch = true;
+getgenv().AutoHatch = false;
 getgenv().AutoClick = false;
 
 function Open()
