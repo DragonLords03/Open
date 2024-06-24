@@ -33,19 +33,19 @@ local function Buy_RNG()
     while _G.Auto_Buy_RNG do
         local args = {[1] = "3_3",[2] = true}
         game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
-        task.wait(5)
+        task.wait(10)
 
         local args = {[1] = "3_4",[2] = true}
         game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
-        task.wait(5)
+        task.wait(10)
 
         local args = {[1] = "3_1",[2] = true}
         game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
-        task.wait(5)
+        task.wait(10)
 
         local args = {[1] = "3_2",[2] = true}
         game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
-        task.wait(5)
+        task.wait(10)
     end
 end
 
@@ -53,15 +53,15 @@ local function Buy_Point()
     while _G.Auto_Buy_Point do
         local args = { [1] = "2_1", [2] = true }
         game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
-        task.wait(10)
+        task.wait(20)
 
         local args = { [1] = "2_2", [2] = true }
         game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
-        task.wait(10)
+        task.wait(20)
 
         local args = { [1] = "2_3", [2] = true }
         game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
-        task.wait(10)
+        task.wait(20)
     end
 end
 
@@ -69,15 +69,15 @@ local function Buy_pixel()
     while _G.Auto_Buy_Pixel do
         local args = { [1] = "1_1", [2] = true }
         game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
-        task.wait(0.5)
+        task.wait(0.75)
 
         local args = { [1] = "1_2", [2] = true }
         game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
-        task.wait(0.5)
+        task.wait(0.75)
 
         local args = { [1] = "1_3", [2] = true }
         game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
-        task.wait(0.5)
+        task.wait(0.75)
     end
 end
 
@@ -125,19 +125,19 @@ local function Buy_Gems()
     while _G.Auto_Buy_Gems do
         local args = {[1] = "8_1",[2] = true}
         game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
-        task.wait(3)
+        task.wait(10)
 
         args = {[1] = "8_3",[2] = true}
         game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
-        task.wait(3)
+        task.wait(10)
 
         args = {[1] = "8_2",[2] = true}
         game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
-        task.wait(3)
+        task.wait(10)
 
         args = {[1] = "8_4",[2] = true}
         game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
-        task.wait(3)
+        task.wait(10)
     end
 end
 
