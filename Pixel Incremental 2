@@ -29,6 +29,17 @@ local function Click()
     end
 end
 
+local function Color()
+    local args = {[1] = "Purple",[2] = 33}
+    game:GetService("ReplicatedStorage").Assets.RemoteEvents.SpendColor:FireServer(unpack(args))
+
+    local args = {[1] = "Blue",[2] = 50}
+    game:GetService("ReplicatedStorage").Assets.RemoteEvents.SpendColor:FireServer(unpack(args))
+
+    local args = {[1] = "Green",[2] = 100}
+    game:GetService("ReplicatedStorage").Assets.RemoteEvents.SpendColor:FireServer(unpack(args))
+end
+
 local function Buy_RNG()
     while _G.Auto_Buy_RNG do
         local args = {[1] = "3_3",[2] = true}
@@ -270,4 +281,8 @@ c:CreateToggle("Auto Buy Research", function(value)
     if value then
         Buy_Research()
     end
+end)
+
+a:CreateButton("Spent equal for Color", function(value)
+    Color()
 end)
