@@ -30,15 +30,18 @@ local function Click()
 end
 
 local function Color()
-    local args
 
-    args = { [1] = "Purple", [2] = 33 }
-    game:GetService("ReplicatedStorage").Assets.RemoteEvents.SpendColor:FireServer(unpack(args))
+    for i = 1, 4 do
+        local args = { [1] = "Purple", [2] = 10 }
+        game:GetService("ReplicatedStorage").Assets.RemoteEvents.SpendColor:FireServer(unpack(args))
+    end
 
-    args = { [1] = "Blue", [2] = 50 }
-    game:GetService("ReplicatedStorage").Assets.RemoteEvents.SpendColor:FireServer(unpack(args))
+    for i = 1, 6 do
+        local args = { [1] = "Blue", [2] = 10 }
+        game:GetService("ReplicatedStorage").Assets.RemoteEvents.SpendColor:FireServer(unpack(args))
+    end
 
-    args = { [1] = "Green", [2] = 100 }
+    local args = { [1] = "Green", [2] = 100 }
     game:GetService("ReplicatedStorage").Assets.RemoteEvents.SpendColor:FireServer(unpack(args))
 end
 
@@ -288,3 +291,12 @@ c:CreateToggle("Auto Buy Research", function(value)
         Buy_Research()
     end
 end)
+
+
+
+local args = {
+    [1] = "Purple",
+    [2] = 10
+}
+
+game:GetService("ReplicatedStorage").Assets.RemoteEvents.SpendColor:FireServer(unpack(args))
