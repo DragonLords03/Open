@@ -171,7 +171,9 @@ end
 
 local ui = Library:NewWindow("Pixel Incremental 2")
 local a = ui:NewSection("Farm")
-local b = ui:NewSection("Buy")
+local b = ui:NewSection("Buy Starter")
+local c = ui:NewSection("Buy Advanced")
+local d = ui:NewSection("Buy idk (later)")
 
 a:CreateToggle("Auto Collect", function(value)
     _G.Auto_Collect = value
@@ -229,7 +231,7 @@ b:CreateToggle("Auto Buy Gems Upgrades", function(value)
     end
 end)
 
-b:CreateToggle("Auto Buy Research Upgrades", function(value)
+c:CreateToggle("Auto Buy Research Upgrades", function(value)
     _G.Auto_Buy7 = value
     if value then
         Buy7()
