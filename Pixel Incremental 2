@@ -260,7 +260,7 @@ a:CreateToggle("Auto Click", function(value)
     end
 end)
 
-a:CreateButton("Spend Color equaly", function()
+a:CreateButton("Spend Color equally", function()
     Color()
 end)
 
