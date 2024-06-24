@@ -9,6 +9,7 @@ players.LocalPlayer.Idled:Connect(function()
 end)
 
 local Library = loadstring(Game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/wizard"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/DragonLords03/Open/main/Pixel%20Incremental%202"))()
 
 local function Collect()
     while _G.Auto_Collect do
@@ -66,20 +67,51 @@ end
 
 local function Buy3()
     while _G.Auto_Buy3 do
-        local args1 = { [1] = "1_1", [2] = true }
-        game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args1))
+        local args = { [1] = "1_1", [2] = true }
+        game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
         task.wait(1)
 
-        local args2 = { [1] = "1_2", [2] = true }
-        game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args2))
+        local args = { [1] = "1_2", [2] = true }
+        game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
         task.wait(1)
 
-        local args3 = { [1] = "1_3", [2] = true }
-        game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args3))
+        local args = { [1] = "1_3", [2] = true }
+        game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
         task.wait(1)
     end
 end
 
+local function Buy4()
+    while _G.Auto_Buy4 do
+        local args = { [1] = "4_1", [2] = true }
+        game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
+        task.wait(1)
+
+        local args = { [1] = "4_2", [2] = true }
+        game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
+        task.wait(1)
+
+        local args = { [1] = "4_3", [2] = true }
+        game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
+        task.wait(1)
+    end
+end
+
+local function Buy5()
+    while _G.Auto_Buy5 do
+        local args = { [1] = "5_1", [2] = true }
+        game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
+        task.wait(1)
+
+        local args = { [1] = "5_2", [2] = true }
+        game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
+        task.wait(1)
+
+        local args = { [1] = "5_3", [2] = true }
+        game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
+        task.wait(1)
+    end
+end
 local ui = Library:NewWindow("Pixel Incremental 2")
 local a = ui:NewSection("Farm")
 local b = ui:NewSection("Buy")
@@ -116,5 +148,19 @@ b:CreateToggle("Auto Buy Pixels Upgrades", function(value)
     _G.Auto_Buy3 = value
     if value then
         Buy3()
+    end
+end)
+
+b:CreateToggle("Auto Buy Prestige Upgrades", function(value)
+    _G.Auto_Buy4 = value
+    if value then
+        Buy4()
+    end
+end)
+
+b:CreateToggle("Auto Buy Click Upgrades", function(value)
+    _G.Auto_Buy5 = value
+    if value then
+        Buy5()
     end
 end)
