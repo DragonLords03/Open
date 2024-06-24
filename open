@@ -1,45 +1,120 @@
-getgenv().AutoHatch = false;
-getgenv().AutoClick = false;
+local bb = game:GetService("VirtualUser")
+local players = game:GetService("Players")
+local localPlayer = players.LocalPlayer
 
-function Open()
-    spawn(function()
-        while AutoHatch == true do
-            local args = {[1] = 7000020,[2] = 4}
-            game:GetService("ReplicatedStorage"):WaitForChild("Tool"):WaitForChild("DrawUp"):WaitForChild("Msg"):WaitForChild("DrawHero"):InvokeServer(unpack(args))
-            wait()
+players.LocalPlayer.Idled:Connect(function()
+    bb:CaptureController()
+    bb:ClickButton2(Vector2.new())
+    print("Anti AFK: Prevented kick due to inactivity.")
+end)
+
+local Library = loadstring(Game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/wizard"))()
+
+local function Collect()
+    while _G.Auto_Collect do
+        for _, Drop in pairs(game:GetService("Workspace").Pixels:GetChildren()) do
+            if Drop:IsA("BasePart") then
+                Drop.CFrame = localPlayer.Character.HumanoidRootPart.CFrame
+            end
         end
-    end)
+        task.wait()
+    end
 end
 
-function Click()
-    spawn(function()
-        while AutoClick == true do
-            game:GetService("ReplicatedStorage").System.SystemClick.Click:FireServer()
-            wait()
-        end
-    end)
+local function Click()
+    while _G.Auto_Click do
+        game:GetService("ReplicatedStorage").Assets.RemoteEvents.Click:FireServer()
+        task.wait()
+    end
 end
 
-local library = loadstring(game:HttpGet(('https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/wall%20v3')))()
+local function Buy1()
+    while _G.Auto_Buy1 do
+        local args = {[1] = "3_1",[2] = true}
+        game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
+        task.wait(1)
 
-local w = library:CreateWindow("Anime Catching Simulator")
+        local args = {[1] = "3_2",[2] = true}
+        game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
+        task.wait(1)
 
-local a = w:CreateFolder("Hatch")
+        local args = {[1] = "3_3",[2] = true}
+        game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
+        task.wait(1)
 
-local b = w:CreateFolder("Plaza ")
+        local args = {[1] = "3_4",[2] = true}
+        game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
+        task.wait(1)
+    end
+end
 
-a:Toggle("Auto Hatch",function(bool)
-    getgenv().AutoHatch = bool
-    print('Auto Place Blocks is: ', bool)
-    if bool then
-        Open();
+local function Buy2()
+    while _G.Auto_Buy2 do
+        local args = { [1] = "2_1", [2] = true }
+        game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
+        task.wait(1)
+
+        local args = { [1] = "2_2", [2] = true }
+        game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
+        task.wait(1)
+
+        local args = { [1] = "2_3", [2] = true }
+        game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
+        task.wait(1)
+    end
+end
+
+local function Buy3()
+    while _G.Auto_Buy3 do
+        local args1 = { [1] = "1_1", [2] = true }
+        game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args1))
+        task.wait(1)
+
+        local args2 = { [1] = "1_2", [2] = true }
+        game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args2))
+        task.wait(1)
+
+        local args3 = { [1] = "1_3", [2] = true }
+        game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args3))
+        task.wait(1)
+    end
+end
+
+local ui = Library:NewWindow("Pixel Incremental 2")
+local a = ui:NewSection("Farm")
+local b = ui:NewSection("Buy")
+
+a:CreateToggle("Auto Collect", function(value)
+    _G.Auto_Collect = value
+    if value then
+        Collect()
     end
 end)
 
-b:Toggle("Auto Click",function(bool)
-    getgenv().AutoClick = bool
-    print('Auto Place Blocks is: ', bool)
-    if bool then
-        Click();
+a:CreateToggle("Auto Click", function(value)
+    _G.Auto_Click = value
+    if value then
+        Click()
+    end
+end)
+
+b:CreateToggle("Auto Buy RNG Upgrades", function(value)
+    _G.Auto_Buy1 = value
+    if value then
+        Buy1()
+    end
+end)
+
+b:CreateToggle("Auto Buy Points Upgrades", function(value)
+    _G.Auto_Buy2 = value
+    if value then
+        Buy2()
+    end
+end)
+
+b:CreateToggle("Auto Buy Pixels Upgrades", function(value)
+    _G.Auto_Buy3 = value
+    if value then
+        Buy3()
     end
 end)
