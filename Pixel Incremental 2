@@ -160,14 +160,6 @@ local function Buy_Click()
         local args = { [1] = "5_3", [2] = true }
         game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
         task.wait(2)
-
-        local args = {[1] = "6_1",[2] = true}
-        game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
-        task.wait(2)
-
-        local args = {[1] = "6_2",[2] = true}
-        game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
-        task.wait(2)
     end
 end
 
@@ -256,11 +248,11 @@ local function Buy_Research()
     end
 end
 
-
 local ui = Library:NewWindow("Pixel Incremental 2")
 local a = ui:NewSection("Farm")
 local b = ui:NewSection("Buy Starter")
 local c = ui:NewSection("Buy Advanced")
+local d = ui:NewSection("Perma Upgrade")
 
 a:CreateToggle("Auto Collect", function(value)
     _G.Auto_Collect = value
@@ -280,14 +272,14 @@ a:CreateButton("Spend Color equally", function(value)
     Color()
 end)
 
-b:CreateToggle("Auto Buy RNG", function(value)
+d:CreateToggle("Auto Buy RNG", function(value)
     _G.Auto_Buy_RNG = value
     if value then
         Buy_RNG()
     end
 end)
 
-b:CreateToggle("Auto Buy Points", function(value)
+d:CreateToggle("Auto Buy Points", function(value)
     _G.Auto_Buy_Point = value
     if value then
         Buy_Point()
