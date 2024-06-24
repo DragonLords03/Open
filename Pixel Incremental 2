@@ -305,11 +305,3 @@ c:CreateToggle("Auto Buy Research", function(value)
     end
 end)
 
-
-
-local args = {
-    [1] = "Purple",
-    [2] = 10
-}
-
-game:GetService("ReplicatedStorage").Assets.RemoteEvents.SpendColor:FireServer(unpack(args))
