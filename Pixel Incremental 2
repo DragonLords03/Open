@@ -1,3 +1,4 @@
+-- loadstring(game:HttpGet("https://raw.githubusercontent.com/DragonLords03/Open/main/Pixel%20Incremental%202"))()
 local bb = game:GetService("VirtualUser")
 local players = game:GetService("Players")
 local localPlayer = players.LocalPlayer
