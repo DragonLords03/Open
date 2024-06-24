@@ -32,39 +32,39 @@ end
 local function Color()
     local args = { [1] = "Purple", [2] = 10 }
     game:GetService("ReplicatedStorage").Assets.RemoteEvents.SpendColor:FireServer(unpack(args))
-    task.wait()
+    task.wait(0.5)
     local args = { [1] = "Purple", [2] = 10 }
     game:GetService("ReplicatedStorage").Assets.RemoteEvents.SpendColor:FireServer(unpack(args))
-    task.wait()
+    task.wait(0.5)
     local args = { [1] = "Purple", [2] = 10 }
     game:GetService("ReplicatedStorage").Assets.RemoteEvents.SpendColor:FireServer(unpack(args))
-    task.wait()
+    task.wait(0.5)
     local args = { [1] = "Purple", [2] = 10 }
     game:GetService("ReplicatedStorage").Assets.RemoteEvents.SpendColor:FireServer(unpack(args))
-    task.wait()
+    task.wait(0.5)
 
     local args = { [1] = "Blue", [2] = 10 }
     game:GetService("ReplicatedStorage").Assets.RemoteEvents.SpendColor:FireServer(unpack(args))
-    task.wait()
+    task.wait(0.5)
     local args = { [1] = "Blue", [2] = 10 }
     game:GetService("ReplicatedStorage").Assets.RemoteEvents.SpendColor:FireServer(unpack(args))
-    task.wait()
+    task.wait(0.5)
     local args = { [1] = "Blue", [2] = 10 }
     game:GetService("ReplicatedStorage").Assets.RemoteEvents.SpendColor:FireServer(unpack(args))
-    task.wait()
+    task.wait(0.5)
     local args = { [1] = "Blue", [2] = 10 }
     game:GetService("ReplicatedStorage").Assets.RemoteEvents.SpendColor:FireServer(unpack(args))
-    task.wait()
+    task.wait(0.5)
     local args = { [1] = "Blue", [2] = 10 }
     game:GetService("ReplicatedStorage").Assets.RemoteEvents.SpendColor:FireServer(unpack(args))
-    task.wait()
+    task.wait(0.5)
     local args = { [1] = "Blue", [2] = 10 }
     game:GetService("ReplicatedStorage").Assets.RemoteEvents.SpendColor:FireServer(unpack(args))
-    task.wait()
+    task.wait(0.5)
 
     local args = { [1] = "Green", [2] = 100 }
     game:GetService("ReplicatedStorage").Assets.RemoteEvents.SpendColor:FireServer(unpack(args))
-    task.wait()
+    task.wait(0.5)
 end
 
 local function Buy_RNG()
