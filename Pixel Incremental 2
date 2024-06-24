@@ -112,6 +112,7 @@ local function Buy5()
         task.wait(1)
     end
 end
+
 local ui = Library:NewWindow("Pixel Incremental 2")
 local a = ui:NewSection("Farm")
 local b = ui:NewSection("Buy")
