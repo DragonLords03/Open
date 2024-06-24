@@ -189,49 +189,49 @@ a:CreateToggle("Auto Click", function(value)
     end
 end)
 
-b:CreateToggle("Auto Buy RNG Upgrades", function(value)
+b:CreateToggle("Auto Buy RNG", function(value)
     _G.Auto_Buy_RNG = value
     if value then
         Buy_RNG()
     end
 end)
 
-b:CreateToggle("Auto Buy Points Upgrades", function(value)
+b:CreateToggle("Auto Buy Points", function(value)
     _G.Auto_Buy_Point = value
     if value then
         Buy_Point()
     end
 end)
 
-b:CreateToggle("Auto Buy Pixels Upgrades", function(value)
+b:CreateToggle("Auto Buy Pixels", function(value)
     _G.Auto_Buy_Pixel = value
     if value then
         Buy_pixel()
     end
 end)
 
-b:CreateToggle("Auto Buy Prestige Upgrades", function(value)
+b:CreateToggle("Auto Buy Prestige", function(value)
     _G.Auto_Buy_Prestige = value
     if value then
         Buy_Prestige()
     end
 end)
 
-b:CreateToggle("Auto Buy Click Upgrades", function(value)
+b:CreateToggle("Auto Buy Click", function(value)
     _G.Auto_Buy_Click = value
     if value then
         Buy_Click()
     end
 end)
 
-b:CreateToggle("Auto Buy Gems Upgrades", function(value)
+b:CreateToggle("Auto Buy Gems", function(value)
     _G.Auto_Buy_Gems = value
     if value then
         Buy_Gems()
     end
 end)
 
-c:CreateToggle("Auto Buy Research Upgrades", function(value)
+c:CreateToggle("Auto Buy Research", function(value)
     _G.Auto_Buy_Research = value
     if value then
         Buy_Research()
