@@ -195,6 +195,10 @@ local function Buy_Research()
         local args = {[1] = "7_18",[2] = true}
         game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
         wait(1)
+
+        local args = {[1] = "7_19",[2] = true}
+        game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
+        wait(1)
     end
 end
 
