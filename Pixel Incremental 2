@@ -141,6 +141,34 @@ local function Buy6()
     end
 end
 
+local function Buy7()
+    while _G.Auto_Buy7 do
+        local args = {[1] = "7_2",[2] = true}
+        game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
+        wait(3)
+
+        local args = {[1] = "7_3",[2] = true}
+        game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
+        wait(3)
+
+        local args = {[1] = "7_1",[2] = true}
+        game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
+        wait(3)
+
+        local args = {[1] = "7_5",[2] = true}
+        game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
+        wait(3)
+
+        local args = {[1] = "7_6",[2] = true}
+        game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
+        wait(3)
+
+        local args = {[1] = "7_4",[2] = true}
+        game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
+        wait(3)
+    end
+end
+
 local ui = Library:NewWindow("Pixel Incremental 2")
 local a = ui:NewSection("Farm")
 local b = ui:NewSection("Buy")
@@ -198,5 +226,12 @@ b:CreateToggle("Auto Buy Gems Upgrades", function(value)
     _G.Auto_Buy6 = value
     if value then
         Buy6()
+    end
+end)
+
+b:CreateToggle("Auto Buy Research Upgrades", function(value)
+    _G.Auto_Buy7 = value
+    if value then
+        Buy7()
     end
 end)
