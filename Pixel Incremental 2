@@ -141,6 +141,7 @@ local function Buy_Gems()
     end
 end
 
+--[[
 local function Buy_Research()
     while _G.Auto_Buy_Research do
         local args = {[1] = "7_2",[2] = true}
@@ -168,12 +169,15 @@ local function Buy_Research()
         wait(3)
     end
 end
+]]
 
 local ui = Library:NewWindow("Pixel Incremental 2")
 local a = ui:NewSection("Farm")
 local b = ui:NewSection("Buy Starter")
+--[[
 local c = ui:NewSection("Buy Advanced")
 local d = ui:NewSection("Buy idk (later)")
+]]
 
 a:CreateToggle("Auto Collect", function(value)
     _G.Auto_Collect = value
@@ -231,9 +235,11 @@ b:CreateToggle("Auto Buy Gems", function(value)
     end
 end)
 
+--[[
 c:CreateToggle("Auto Buy Research", function(value)
     _G.Auto_Buy_Research = value
     if value then
         Buy_Research()
     end
 end)
+]]
