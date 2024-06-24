@@ -9,7 +9,6 @@ players.LocalPlayer.Idled:Connect(function()
 end)
 
 local Library = loadstring(Game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/wizard"))()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/DragonLords03/Open/main/Pixel%20Incremental%202"))()
 
 local function Collect()
     while _G.Auto_Collect do
