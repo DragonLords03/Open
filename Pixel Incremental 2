@@ -30,13 +30,15 @@ local function Click()
 end
 
 local function Color()
-    local args = {[1] = "Purple",[2] = 33}
+    local args
+
+    args = { [1] = "Purple", [2] = 33 }
     game:GetService("ReplicatedStorage").Assets.RemoteEvents.SpendColor:FireServer(unpack(args))
 
-    local args = {[1] = "Blue",[2] = 50}
+    args = { [1] = "Blue", [2] = 50 }
     game:GetService("ReplicatedStorage").Assets.RemoteEvents.SpendColor:FireServer(unpack(args))
 
-    local args = {[1] = "Green",[2] = 100}
+    args = { [1] = "Green", [2] = 100 }
     game:GetService("ReplicatedStorage").Assets.RemoteEvents.SpendColor:FireServer(unpack(args))
 end
 
@@ -233,6 +235,10 @@ a:CreateToggle("Auto Click", function(value)
     end
 end)
 
+a:CreateButton("Spend equal for Color", function()
+    Color()
+end)
+
 b:CreateToggle("Auto Buy RNG", function(value)
     _G.Auto_Buy_RNG = value
     if value then
@@ -281,8 +287,4 @@ c:CreateToggle("Auto Buy Research", function(value)
     if value then
         Buy_Research()
     end
-end)
-
-a:CreateButton("Spent equal for Color", function(value)
-    Color()
 end)
