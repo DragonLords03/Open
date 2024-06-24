@@ -29,8 +29,8 @@ local function Click()
     end
 end
 
-local function Buy1()
-    while _G.Auto_Buy1 do
+local function Buy_RNG()
+    while _G.Auto_Buy_RNG do
         local args = {[1] = "3_3",[2] = true}
         game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
         task.wait(5)
@@ -49,8 +49,8 @@ local function Buy1()
     end
 end
 
-local function Buy2()
-    while _G.Auto_Buy2 do
+local function Buy_Point()
+    while _G.Auto_Buy_Point do
         local args = { [1] = "2_1", [2] = true }
         game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
         task.wait(10)
@@ -65,8 +65,8 @@ local function Buy2()
     end
 end
 
-local function Buy3()
-    while _G.Auto_Buy3 do
+local function Buy_pixel()
+    while _G.Auto_Buy_Pixel do
         local args = { [1] = "1_1", [2] = true }
         game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
         task.wait(0.5)
@@ -81,8 +81,8 @@ local function Buy3()
     end
 end
 
-local function Buy4()
-    while _G.Auto_Buy4 do
+local function Buy_Prestige()
+    while _G.Auto_Buy_Prestige do
         local args = { [1] = "4_3", [2] = true }
         game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
         task.wait(2)
@@ -97,8 +97,8 @@ local function Buy4()
     end
 end
 
-local function Buy5()
-    while _G.Auto_Buy5 do
+local function Buy_Click()
+    while _G.Auto_Buy_Click do
         local args = { [1] = "5_1", [2] = true }
         game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
         task.wait(2)
@@ -121,8 +121,8 @@ local function Buy5()
     end
 end
 
-local function Buy6()
-    while _G.Auto_Buy6 do
+local function Buy_Gems()
+    while _G.Auto_Buy_Gems do
         local args = {[1] = "8_1",[2] = true}
         game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
         task.wait(3)
@@ -141,8 +141,8 @@ local function Buy6()
     end
 end
 
-local function Buy7()
-    while _G.Auto_Buy7 do
+local function Buy_Research()
+    while _G.Auto_Buy_Research do
         local args = {[1] = "7_2",[2] = true}
         game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
         wait(3)
@@ -190,50 +190,50 @@ a:CreateToggle("Auto Click", function(value)
 end)
 
 b:CreateToggle("Auto Buy RNG Upgrades", function(value)
-    _G.Auto_Buy1 = value
+    _G.Auto_Buy_RNG = value
     if value then
-        Buy1()
+        Buy_RNG()
     end
 end)
 
 b:CreateToggle("Auto Buy Points Upgrades", function(value)
-    _G.Auto_Buy2 = value
+    _G.Auto_Buy_Point = value
     if value then
-        Buy2()
+        Buy_Point()
     end
 end)
 
 b:CreateToggle("Auto Buy Pixels Upgrades", function(value)
-    _G.Auto_Buy3 = value
+    _G.Auto_Buy_Pixel = value
     if value then
-        Buy3()
+        Buy_pixel()
     end
 end)
 
 b:CreateToggle("Auto Buy Prestige Upgrades", function(value)
-    _G.Auto_Buy4 = value
+    _G.Auto_Buy_Prestige = value
     if value then
-        Buy4()
+        Buy_Prestige()
     end
 end)
 
 b:CreateToggle("Auto Buy Click Upgrades", function(value)
-    _G.Auto_Buy5 = value
+    _G.Auto_Buy_Click = value
     if value then
-        Buy5()
+        Buy_Click()
     end
 end)
 
 b:CreateToggle("Auto Buy Gems Upgrades", function(value)
-    _G.Auto_Buy6 = value
+    _G.Auto_Buy_Gems = value
     if value then
-        Buy6()
+        Buy_Gems()
     end
 end)
 
 c:CreateToggle("Auto Buy Research Upgrades", function(value)
-    _G.Auto_Buy7 = value
+    _G.Auto_Buy_Research = value
     if value then
-        Buy7()
+        Buy_Research()
     end
 end)
