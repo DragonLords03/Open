@@ -59,6 +59,15 @@ local function Buy(upgradeList, interval)
 end
 
 local buyLists = {
+    Auto_Buy_Pixel = {
+        autoFlag = "Auto_Buy_Pixel",
+        upgrades = {
+            {"1_1", true},
+            {"1_2", true},
+            {"1_3", true}
+        },
+        interval = 0.75
+    },
     Auto_Buy_Prestige = {
         autoFlag = "Auto_Buy_Prestige",
         upgrades = {
@@ -120,9 +129,9 @@ local buyLists = {
     Auto_Buy_Scrap = {
         autoFlag = "Auto_Buy_Scrap",
         upgrades = {
-            {"11_1, true"},
-            {"11_2, true"},
-            {"11_5, true"},
+            {"11_1", true},
+            {"11_2", true},
+            {"11_5", true}
         },
         interval = 3
     }
@@ -174,6 +183,7 @@ a:CreateButton("Spend Color equally", function(value)
 end)
 
 local order = {
+    "Auto_Buy_Pixel",
     "Auto_Buy_Prestige",
     "Auto_Buy_Click",
     "Auto_Buy_RNG",
@@ -188,7 +198,9 @@ for _, key in ipairs(order) do
         b:CreateToggle(key:gsub("_", " "), function(value)
             _G[key] = value
             if value then
-                Buy(upgradeList, upgradeList.interval)
+                task.spawn(function()
+                    Buy(upgradeList, upgradeList.interval)
+                end)
             end
         end)
     end
