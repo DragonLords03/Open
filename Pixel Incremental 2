@@ -157,13 +157,6 @@ local ui = Library:NewWindow("Pixel Incremental 2")
 local a = ui:NewSection("Farm")
 local b = ui:NewSection("Buy")
 
-a:CreateToggle("Auto Farm", function(value)
-    _G.Auto_Farm = value
-    if value then
-        Farm()
-    end
-end)
-
 a:CreateToggle("Auto Collect", function(value)
     _G.Auto_Collect = value
     if value then
@@ -180,6 +173,13 @@ end)
 
 a:CreateButton("Spend Color equally", function(value)
     Color()
+end)
+
+a:CreateToggle("Auto Farm", function(value)
+    _G.Auto_Farm = value
+    if value then
+        Farm()
+    end
 end)
 
 local order = {
