@@ -1,241 +1,136 @@
--- loadstring(game:HttpGet("https://raw.githubusercontent.com/DragonLords03/Open/main/Pixel%20Incremental%202"))()
-local bb = game:GetService("VirtualUser")
-local players = game:GetService("Players")
-local localPlayer = players.LocalPlayer
+-- Load required services and libraries
+local VirtualUser = game:GetService("VirtualUser")
+local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local LocalPlayer = Players.LocalPlayer
 
-players.LocalPlayer.Idled:Connect(function()
-    bb:CaptureController()
-    bb:ClickButton2(Vector2.new())
+-- Anti AFK Script
+Players.LocalPlayer.Idled:Connect(function()
+    VirtualUser:CaptureController()
+    VirtualUser:ClickButton2(Vector2.new())
     print("Anti AFK: Prevented kick due to inactivity.")
 end)
 
+-- Load external libraries
 local Library = loadstring(Game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/wizard"))()
 
+-- Utility Functions
+local function fireRemoteEvent(remoteEvent, ...)
+    ReplicatedStorage.Assets.RemoteEvents[remoteEvent]:FireServer(...)
+end
+
+local function spendColor(color, amount, times)
+    local args = { color, amount }
+    for _ = 1, times do
+        fireRemoteEvent("SpendColor", unpack(args))
+        task.wait(0.5)
+    end
+end
+
+-- Collect Function
 local function Collect()
     while _G.Auto_Collect do
         for _, Drop in pairs(game:GetService("Workspace").Pixels:GetChildren()) do
             if Drop:IsA("BasePart") then
-                Drop.CFrame = localPlayer.Character.HumanoidRootPart.CFrame
+                Drop.CFrame = LocalPlayer.Character.HumanoidRootPart.CFrame
             end
         end
         task.wait(0.1)
     end
 end
 
+-- Click Function
 local function Click()
     while _G.Auto_Click do
-        game:GetService("ReplicatedStorage").Assets.RemoteEvents.Click:FireServer()
+        fireRemoteEvent("Click")
         task.wait(0.1)
     end
 end
 
+-- Color Function
 local function Color()
-    local args = { [1] = "Purple", [2] = 10 }
-    game:GetService("ReplicatedStorage").Assets.RemoteEvents.SpendColor:FireServer(unpack(args))
-    task.wait(0.5)
-    local args = { [1] = "Purple", [2] = 10 }
-    game:GetService("ReplicatedStorage").Assets.RemoteEvents.SpendColor:FireServer(unpack(args))
-    task.wait(0.5)
-    local args = { [1] = "Purple", [2] = 10 }
-    game:GetService("ReplicatedStorage").Assets.RemoteEvents.SpendColor:FireServer(unpack(args))
-    task.wait(0.5)
-    local args = { [1] = "Purple", [2] = 10 }
-    game:GetService("ReplicatedStorage").Assets.RemoteEvents.SpendColor:FireServer(unpack(args))
-    task.wait(0.5)
-
-    local args = { [1] = "Blue", [2] = 10 }
-    game:GetService("ReplicatedStorage").Assets.RemoteEvents.SpendColor:FireServer(unpack(args))
-    task.wait(0.5)
-    local args = { [1] = "Blue", [2] = 10 }
-    game:GetService("ReplicatedStorage").Assets.RemoteEvents.SpendColor:FireServer(unpack(args))
-    task.wait(0.5)
-    local args = { [1] = "Blue", [2] = 10 }
-    game:GetService("ReplicatedStorage").Assets.RemoteEvents.SpendColor:FireServer(unpack(args))
-    task.wait(0.5)
-    local args = { [1] = "Blue", [2] = 10 }
-    game:GetService("ReplicatedStorage").Assets.RemoteEvents.SpendColor:FireServer(unpack(args))
-    task.wait(0.5)
-    local args = { [1] = "Blue", [2] = 10 }
-    game:GetService("ReplicatedStorage").Assets.RemoteEvents.SpendColor:FireServer(unpack(args))
-    task.wait(0.5)
-    local args = { [1] = "Blue", [2] = 10 }
-    game:GetService("ReplicatedStorage").Assets.RemoteEvents.SpendColor:FireServer(unpack(args))
-    task.wait(0.5)
-    local args = { [1] = "Blue", [2] = 1 }
-    game:GetService("ReplicatedStorage").Assets.RemoteEvents.SpendColor:FireServer(unpack(args))
-    task.wait(0.5)
-    local args = { [1] = "Blue", [2] = 1 }
-    game:GetService("ReplicatedStorage").Assets.RemoteEvents.SpendColor:FireServer(unpack(args))
-    task.wait(0.5)
-    local args = { [1] = "Blue", [2] = 1 }
-    game:GetService("ReplicatedStorage").Assets.RemoteEvents.SpendColor:FireServer(unpack(args))
-    task.wait(0.5)
-    local args = { [1] = "Blue", [2] = 1 }
-    game:GetService("ReplicatedStorage").Assets.RemoteEvents.SpendColor:FireServer(unpack(args))
-    task.wait(0.5)
-
-    local args = { [1] = "Green", [2] = 100 }
-    game:GetService("ReplicatedStorage").Assets.RemoteEvents.SpendColor:FireServer(unpack(args))
-    task.wait(0.5)
+    spendColor("Purple", 10, 4)
+    spendColor("Blue", 10, 6)
+    spendColor("Blue", 1, 6)
+    fireRemoteEvent("SpendColor", "Green", 100)
 end
 
-local function Buy_RNG()
-    while _G.Auto_Buy_RNG do
-        local args = {[1] = "3_3",[2] = true}
-        game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
-        task.wait(10)
-
-        local args = {[1] = "3_4",[2] = true}
-        game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
-        task.wait(10)
-
-        local args = {[1] = "3_1",[2] = true}
-        game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
-        task.wait(10)
-
-        local args = {[1] = "3_2",[2] = true}
-        game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
-        task.wait(10)
+-- General Buy Function
+local function Buy(upgradeList, interval)
+    while _G[upgradeList.autoFlag] do
+        for _, upgrade in ipairs(upgradeList.upgrades) do
+            fireRemoteEvent("BuyUpgrade", unpack(upgrade))
+            task.wait(interval)
+        end
     end
 end
 
-local function Buy_pixel()
-    while _G.Auto_Buy_Pixel do
-        local args = { [1] = "1_1", [2] = true }
-        game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
-        task.wait(0.75)
+-- Buy Lists
+local buyLists = {
+    Auto_Buy_Prestige = {
+        autoFlag = "Auto_Buy_Prestige",
+        upgrades = {
+            {"4_3", true},
+            {"4_1", true},
+            {"4_2", true},
+            {"4_4", true}
+        },
+        interval = 2
+    },
+    Auto_Buy_Click = {
+        autoFlag = "Auto_Buy_Click",
+        upgrades = {
+            {"5_1", true},
+            {"5_2", true},
+            {"5_3", true}
+        },
+        interval = 2
+    },
+    Auto_Buy_RNG = {
+        autoFlag = "Auto_Buy_RNG",
+        upgrades = {
+            {"3_3", true},
+            {"3_4", true},
+            {"3_1", true},
+            {"3_2", true}
+        },
+        interval = 10
+    },
+    Auto_Buy_Gems = {
+        autoFlag = "Auto_Buy_Gems",
+        upgrades = {
+            {"8_1", true},
+            {"8_3", true},
+            {"8_2", true},
+            {"8_4", true}
+        },
+        interval = 10
+    },
+    Auto_Buy_Research = {
+        autoFlag = "Auto_Buy_Research",
+        upgrades = {
+            {"7_3", true},
+            {"7_1", true},
+            {"7_6", true},
+            {"7_4", true},
+            {"7_8", true},
+            {"7_11", true},
+            {"7_16", true},
+            {"7_17", true},
+            {"7_12", true},
+            {"7_13", true},
+            {"7_19", true},
+            {"7_21", true},
+            {"7_24", true}
+        },
+        interval = 1
+    }
+}
 
-        local args = { [1] = "1_2", [2] = true }
-        game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
-        task.wait(0.75)
-
-        local args = { [1] = "1_3", [2] = true }
-        game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
-        task.wait(0.75)
-    end
-end
-
-local function Buy_Prestige()
-    while _G.Auto_Buy_Prestige do
-        local args = { [1] = "4_3", [2] = true }
-        game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
-        task.wait(2)
-
-        local args = { [1] = "4_1", [2] = true }
-        game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
-        task.wait(2)
-
-        local args = { [1] = "4_2", [2] = true }
-        game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
-        task.wait(2)
-    end
-end
-
-local function Buy_Click()
-    while _G.Auto_Buy_Click do
-        local args = { [1] = "5_1", [2] = true }
-        game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
-        task.wait(2)
-
-        local args = { [1] = "5_2", [2] = true }
-        game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
-        task.wait(2)
-
-        local args = { [1] = "5_3", [2] = true }
-        game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
-        task.wait(2)
-    end
-end
-
-local function Buy_Gems()
-    while _G.Auto_Buy_Gems do
-        local args = {[1] = "8_1",[2] = true}
-        game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
-        task.wait(10)
-
-        args = {[1] = "8_3",[2] = true}
-        game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
-        task.wait(10)
-
-        args = {[1] = "8_2",[2] = true}
-        game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
-        task.wait(10)
-
-        args = {[1] = "8_4",[2] = true}
-        game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
-        task.wait(10)
-    end
-end
-
-
-local function Buy_Research()
-    while _G.Auto_Buy_Research do
-        local args = {[1] = "7_3",[2] = true}
-        game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
-        task.wait(1)
-
-        local args = {[1] = "7_1",[2] = true}
-        game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
-        task.wait(1)
-
-        local args = {[1] = "7_6",[2] = true}
-        game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
-        task.wait(1)
-
-        local args = {[1] = "7_4",[2] = true}
-        game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
-        task.wait(1)
-
-        local args = {[1] = "7_8",[2] = true}
-        game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
-        task.wait(1)
-
-        local args = {[1] = "7_11",[2] = true}
-        game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
-        task.wait(1)
-
-        local args = {[1] = "7_8",[2] = true}
-        game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
-        task.wait(1)
-
-        local args = {[1] = "7_11",[2] = true}
-        game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
-        task.wait(1)
-
-        local args = {[1] = "7_16",[2] = true}
-        game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
-        task.wait(1)
-
-        local args = {[1] = "7_17",[2] = true}
-        game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
-        task.wait(1)
-
-        local args = {[1] = "7_12",[2] = true}
-        game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
-        task.wait(1)
-
-        local args = {[1] = "7_13",[2] = true}
-        game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
-        task.wait(1)
-
-        local args = {[1] = "7_19",[2] = true}
-        game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
-        task.wait(1)
-
-        local args = {[1] = "7_21",[2] = true}
-        game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
-        task.wait(1)
-
-        local args = {[1] = "7_24",[2] = true}
-        game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
-        task.wait(1)
-    end
-end
-
+-- Farm Function
 local function Farm()
-    local player = game:GetService("Players").LocalPlayer
-    local humanoidRootPart = player.Character and player.Character:FindFirstChild("HumanoidRootPart")
-    local humanoid = player.Character and player.Character:FindFirstChild("Humanoid")
+    local humanoidRootPart = LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+    local humanoid = LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("Humanoid")
 
     if not humanoidRootPart or not humanoid then return end
 
@@ -249,13 +144,17 @@ local function Farm()
     end
 end
 
+-- UI Setup
 local ui = Library:NewWindow("Pixel Incremental 2")
-local ui2 = Library:NewWindow("Pixel Incremental 2")
 local a = ui:NewSection("Farm")
-local d = ui:NewSection("Perma Upgrade")
-local b = ui:NewSection("Buy Starter")
-local c = ui:NewSection("Buy Advanced")
-local e = ui2:NewSection("Farm Research/Runes")
+local b = ui:NewSection("Buy")
+
+a:CreateToggle("Auto Farm", function(value)
+    _G.Auto_Farm = value
+    if value then
+        Farm()
+    end
+end)
 
 a:CreateToggle("Auto Collect", function(value)
     _G.Auto_Collect = value
@@ -275,51 +174,22 @@ a:CreateButton("Spend Color equally", function(value)
     Color()
 end)
 
-d:CreateToggle("Auto Buy RNG", function(value)
-    _G.Auto_Buy_RNG = value
-    if value then
-        Buy_RNG()
-    end
-end)
+local order = {
+    "Auto_Buy_Prestige",
+    "Auto_Buy_Click",
+    "Auto_Buy_RNG",
+    "Auto_Buy_Gems",
+    "Auto_Buy_Research"
+}
 
-b:CreateToggle("Auto Buy Pixels", function(value)
-    _G.Auto_Buy_Pixel = value
-    if value then
-        Buy_pixel()
+for _, key in ipairs(order) do
+    local upgradeList = buyLists[key]
+    if upgradeList then
+        b:CreateToggle(key:gsub("_", " "), function(value)
+            _G[key] = value
+            if value then
+                Buy(upgradeList, upgradeList.interval)
+            end
+        end)
     end
-end)
-
-b:CreateToggle("Auto Buy Prestige", function(value)
-    _G.Auto_Buy_Prestige = value
-    if value then
-        Buy_Prestige()
-    end
-end)
-
-b:CreateToggle("Auto Buy Click", function(value)
-    _G.Auto_Buy_Click = value
-    if value then
-        Buy_Click()
-    end
-end)
-
-b:CreateToggle("Auto Buy Gems", function(value)
-    _G.Auto_Buy_Gems = value
-    if value then
-        Buy_Gems()
-    end
-end)
-
-c:CreateToggle("Auto Buy Research", function(value)
-    _G.Auto_Buy_Research = value
-    if value then
-        Buy_Research()
-    end
-end)
-
-e:CreateToggle("Auto Farm", function(value)
-    _G.Auto_Farm = value
-    if value then
-        Farm()
-    end
-end)
+end
