@@ -1,20 +1,17 @@
--- Load required services and libraries
+-- loadstring(game:HttpGet("https://raw.githubusercontent.com/DragonLords03/Open/main/Pixel%20Incremental%202"))()
 local VirtualUser = game:GetService("VirtualUser")
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local LocalPlayer = Players.LocalPlayer
 
--- Anti AFK Script
 Players.LocalPlayer.Idled:Connect(function()
     VirtualUser:CaptureController()
     VirtualUser:ClickButton2(Vector2.new())
     print("Anti AFK: Prevented kick due to inactivity.")
 end)
 
--- Load external libraries
 local Library = loadstring(Game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/wizard"))()
 
--- Utility Functions
 local function fireRemoteEvent(remoteEvent, ...)
     ReplicatedStorage.Assets.RemoteEvents[remoteEvent]:FireServer(...)
 end
@@ -27,7 +24,6 @@ local function spendColor(color, amount, times)
     end
 end
 
--- Collect Function
 local function Collect()
     while _G.Auto_Collect do
         for _, Drop in pairs(game:GetService("Workspace").Pixels:GetChildren()) do
@@ -39,7 +35,6 @@ local function Collect()
     end
 end
 
--- Click Function
 local function Click()
     while _G.Auto_Click do
         fireRemoteEvent("Click")
@@ -47,7 +42,6 @@ local function Click()
     end
 end
 
--- Color Function
 local function Color()
     spendColor("Purple", 10, 4)
     spendColor("Blue", 10, 6)
@@ -55,7 +49,6 @@ local function Color()
     fireRemoteEvent("SpendColor", "Green", 100)
 end
 
--- General Buy Function
 local function Buy(upgradeList, interval)
     while _G[upgradeList.autoFlag] do
         for _, upgrade in ipairs(upgradeList.upgrades) do
@@ -65,7 +58,6 @@ local function Buy(upgradeList, interval)
     end
 end
 
--- Buy Lists
 local buyLists = {
     Auto_Buy_Prestige = {
         autoFlag = "Auto_Buy_Prestige",
@@ -127,7 +119,6 @@ local buyLists = {
     }
 }
 
--- Farm Function
 local function Farm()
     local humanoidRootPart = LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
     local humanoid = LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("Humanoid")
@@ -144,7 +135,6 @@ local function Farm()
     end
 end
 
--- UI Setup
 local ui = Library:NewWindow("Pixel Incremental 2")
 local a = ui:NewSection("Farm")
 local b = ui:NewSection("Buy")
