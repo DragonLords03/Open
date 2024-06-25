@@ -18,14 +18,14 @@ local function Collect()
                 Drop.CFrame = localPlayer.Character.HumanoidRootPart.CFrame
             end
         end
-        task.wait()
+        task.wait(0.1)
     end
 end
 
 local function Click()
     while _G.Auto_Click do
         game:GetService("ReplicatedStorage").Assets.RemoteEvents.Click:FireServer()
-        task.wait()
+        task.wait(0.1)
     end
 end
 
@@ -96,22 +96,6 @@ local function Buy_RNG()
         local args = {[1] = "3_2",[2] = true}
         game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
         task.wait(10)
-    end
-end
-
-local function Buy_Point()
-    while _G.Auto_Buy_Point do
-        local args = { [1] = "2_1", [2] = true }
-        game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
-        task.wait(20)
-
-        local args = { [1] = "2_2", [2] = true }
-        game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
-        task.wait(20)
-
-        local args = { [1] = "2_3", [2] = true }
-        game:GetService("ReplicatedStorage").Assets.RemoteEvents.BuyUpgrade:FireServer(unpack(args))
-        task.wait(20)
     end
 end
 
@@ -298,13 +282,6 @@ d:CreateToggle("Auto Buy RNG", function(value)
     end
 end)
 
-d:CreateToggle("Auto Buy Points", function(value)
-    _G.Auto_Buy_Point = value
-    if value then
-        Buy_Point()
-    end
-end)
-
 b:CreateToggle("Auto Buy Pixels", function(value)
     _G.Auto_Buy_Pixel = value
     if value then
@@ -332,7 +309,6 @@ b:CreateToggle("Auto Buy Gems", function(value)
         Buy_Gems()
     end
 end)
-
 
 c:CreateToggle("Auto Buy Research", function(value)
     _G.Auto_Buy_Research = value
