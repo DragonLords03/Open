@@ -67,7 +67,7 @@ local buyLists = {
             {"4_2", true},
             {"4_4", true}
         },
-        interval = 2
+        interval = 1.5
     },
     Auto_Buy_Click = {
         autoFlag = "Auto_Buy_Click",
@@ -116,6 +116,15 @@ local buyLists = {
             {"7_24", true}
         },
         interval = 1
+    },
+    Auto_Buy_Scrap = {
+        autoFlag = "Auto_Buy_Scrap",
+        upgrades = {
+            {"11_1, true"},
+            {"11_2, true"},
+            {"11_5, true"},
+        },
+        interval = 3
     }
 }
 
