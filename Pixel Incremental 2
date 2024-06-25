@@ -66,7 +66,7 @@ local buyLists = {
             {"1_2", true},
             {"1_3", true}
         },
-        interval = 0.75
+        interval = 1
     },
     Auto_Buy_Prestige = {
         autoFlag = "Auto_Buy_Prestige",
@@ -76,7 +76,7 @@ local buyLists = {
             {"4_2", true},
             {"4_4", true}
         },
-        interval = 1.5
+        interval = 2
     },
     Auto_Buy_Click = {
         autoFlag = "Auto_Buy_Click",
@@ -85,7 +85,7 @@ local buyLists = {
             {"5_2", true},
             {"5_3", true}
         },
-        interval = 2
+        interval = 3
     },
     Auto_Buy_RNG = {
         autoFlag = "Auto_Buy_RNG",
@@ -105,7 +105,7 @@ local buyLists = {
             {"8_2", true},
             {"8_4", true}
         },
-        interval = 10
+        interval = 9
     },
     Auto_Buy_Research = {
         autoFlag = "Auto_Buy_Research",
@@ -124,16 +124,17 @@ local buyLists = {
             {"7_21", true},
             {"7_24", true}
         },
-        interval = 1
+        interval = 0.75
     },
     Auto_Buy_Scrap = {
         autoFlag = "Auto_Buy_Scrap",
         upgrades = {
             {"11_1", true},
             {"11_2", true},
-            {"11_5", true}
+            {"11_5", true},
+            {"12_2", true}
         },
-        interval = 3
+        interval = 5
     }
 }
 
