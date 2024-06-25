@@ -248,11 +248,30 @@ local function Buy_Research()
     end
 end
 
+local function Farm()
+    local player = game:GetService("Players").LocalPlayer
+    local humanoidRootPart = player.Character and player.Character:FindFirstChild("HumanoidRootPart")
+    local humanoid = player.Character and player.Character:FindFirstChild("Humanoid")
+
+    if not humanoidRootPart or not humanoid then return end
+
+    while _G.Auto_Farm do
+        humanoidRootPart.CFrame = CFrame.new(game:GetService("Workspace").Research.Button.Touch.CFrame.Position + Vector3.new(0, 1, 0))
+        humanoid:ChangeState(Enum.HumanoidStateType.GettingUp)
+        task.wait(1)
+        humanoidRootPart.CFrame = CFrame.new(game:GetService("Workspace").Runes.Button.Touch.CFrame.Position + Vector3.new(0, 1, 0))
+        humanoid:ChangeState(Enum.HumanoidStateType.GettingUp)
+        task.wait(59)
+    end
+end
+
 local ui = Library:NewWindow("Pixel Incremental 2")
+local ui2 = Library:NewWindow("Pixel Incremental 2")
 local a = ui:NewSection("Farm")
+local d = ui:NewSection("Perma Upgrade")
 local b = ui:NewSection("Buy Starter")
 local c = ui:NewSection("Buy Advanced")
-local d = ui:NewSection("Perma Upgrade")
+local e = ui2:NewSection("Farm Research/Runes")
 
 a:CreateToggle("Auto Collect", function(value)
     _G.Auto_Collect = value
@@ -319,5 +338,12 @@ c:CreateToggle("Auto Buy Research", function(value)
     _G.Auto_Buy_Research = value
     if value then
         Buy_Research()
+    end
+end)
+
+e:CreateToggle("Auto Farm", function(value)
+    _G.Auto_Farm = value
+    if value then
+        Farm()
     end
 end)
