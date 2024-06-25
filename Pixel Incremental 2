@@ -178,7 +178,8 @@ local order = {
     "Auto_Buy_Click",
     "Auto_Buy_RNG",
     "Auto_Buy_Gems",
-    "Auto_Buy_Research"
+    "Auto_Buy_Research",
+    "Auto_Buy_Scrap"
 }
 
 for _, key in ipairs(order) do
