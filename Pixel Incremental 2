@@ -71,8 +71,8 @@ local function Buy(upgradeList, interval)
 end
 
 local buyLists = {
-    Auto_Buy_Pixel = {
-        autoFlag = "Auto_Buy_Pixel",
+    Buy_Pixel = {
+        autoFlag = "Buy_Pixel",
         upgrades = {
             {"1_1", true},
             {"1_2", true},
@@ -80,8 +80,8 @@ local buyLists = {
         },
         interval = 1
     },
-    Auto_Buy_Prestige = {
-        autoFlag = "Auto_Buy_Prestige",
+    Buy_Prestige = {
+        autoFlag = "Buy_Prestige",
         upgrades = {
             {"4_3", true},
             {"4_1", true},
@@ -90,8 +90,8 @@ local buyLists = {
         },
         interval = 2
     },
-    Auto_Buy_Click = {
-        autoFlag = "Auto_Buy_Click",
+    Buy_Click = {
+        autoFlag = "Buy_Click",
         upgrades = {
             {"5_1", true},
             {"5_2", true},
@@ -99,8 +99,8 @@ local buyLists = {
         },
         interval = 3
     },
-    Auto_Buy_RNG = {
-        autoFlag = "Auto_Buy_RNG",
+    Buy_RNG = {
+        autoFlag = "Buy_RNG",
         upgrades = {
             {"3_3", true},
             {"3_4", true},
@@ -109,8 +109,8 @@ local buyLists = {
         },
         interval = 10
     },
-    Auto_Buy_Gems = {
-        autoFlag = "Auto_Buy_Gems",
+    Buy_Gems = {
+        autoFlag = "Buy_Gems",
         upgrades = {
             {"8_1", true},
             {"8_3", true},
@@ -119,8 +119,8 @@ local buyLists = {
         },
         interval = 9
     },
-    Auto_Buy_Research = {
-        autoFlag = "Auto_Buy_Research",
+    Buy_Research = {
+        autoFlag = "Buy_Research",
         upgrades = {
             {"7_1", true},
             {"7_3", true},
@@ -138,8 +138,8 @@ local buyLists = {
         },
         interval = 0.75
     },
-    Auto_Buy_Scrap = {
-        autoFlag = "Auto_Buy_Scrap",
+    Buy_Scrap = {
+        autoFlag = "Buy_Scrap",
         upgrades = {
             {"11_1", true},
             {"11_2", true},
@@ -150,6 +150,19 @@ local buyLists = {
             {"13_3", true}
         },
         interval = 3.5
+    },
+    Buy_Stardust = {
+        autoFlag = "Buy_Stardust",
+        upgrades = {
+            {"15_1", True},
+            {"15_5", True},
+            {"15_3", True},
+            {"15_4", True},
+            {"15_2", True},
+            {"15_7", True},
+            {"15_6", True}
+        },
+        interval = 2
     }
 }
 
@@ -229,13 +242,14 @@ a:CreateToggle("Farm Rune/Scrap", function(value)
 end)
 
 local order = {
-    "Auto_Buy_RNG",
-    "Auto_Buy_Pixel",
-    "Auto_Buy_Prestige",
-    "Auto_Buy_Click",
-    "Auto_Buy_Gems",
-    "Auto_Buy_Research",
-    "Auto_Buy_Scrap"
+    "Buy_RNG",
+    "Buy_Pixel",
+    "Buy_Prestige",
+    "Buy_Click",
+    "Buy_Gems",
+    "Buy_Research",
+    "Buy_Scrap",
+    "Buy_Stardust"
 }
 
 for _, key in ipairs(order) do
