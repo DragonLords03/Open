@@ -204,8 +204,9 @@ local function Farm2()
 end
 
 local ui = Library:NewWindow("Pixel Incremental 2")
-local a = ui:NewSection("Farm")
+local a = ui:NewSection("Auto")
 local b = ui:NewSection("Auto Buy")
+local c = ui:NewSection("Farm")
 
 a:CreateToggle("Auto Collect Pixel", function(value)
     _G.Auto_Collect_Pixel = value
@@ -228,14 +229,14 @@ a:CreateToggle("Auto Click", function(value)
     end
 end)
 
-a:CreateToggle("Farm Rune/Research", function(value)
+c:CreateToggle("Farm Rune/Research", function(value)
     _G.Auto_Farm = value
     if value then
         Farm()
     end
 end)
 
-a:CreateToggle("Farm Rune/Scrap", function(value)
+c:CreateToggle("Farm Rune/Scrap", function(value)
     _G.Auto_Farm2 = value
     if value then
         Farm2()
