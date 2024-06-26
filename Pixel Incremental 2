@@ -164,10 +164,10 @@ local function Farm2()
     while _G.Auto_Farm2 do
         humanoidRootPart.CFrame = CFrame.new(game:GetService("Workspace").Runes.Button.Touch.CFrame.Position + Vector3.new(0, 1, 0))
         humanoid:ChangeState(Enum.HumanoidStateType.GettingUp)
-        task.wait(10)
+        task.wait(20)
         humanoidRootPart.CFrame = CFrame.new(game:GetService("Workspace").FactoryConveyor.Spawn.Touch.CFrame.Position + Vector3.new(0, 1, 0))
         humanoid:ChangeState(Enum.HumanoidStateType.GettingUp)
-        task.wait(20)
+        task.wait(40)
     end
 end
 
