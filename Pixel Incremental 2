@@ -97,7 +97,7 @@ local buyLists = {
             {"5_2", true},
             {"5_3", true}
         },
-        interval = 3
+        interval = 2.5
     },
     Buy_RNG = {
         autoFlag = "Buy_RNG",
@@ -117,7 +117,7 @@ local buyLists = {
             {"8_2", true},
             {"8_4", true}
         },
-        interval = 9
+        interval = 8
     },
     Buy_Research = {
         autoFlag = "Buy_Research",
@@ -149,7 +149,7 @@ local buyLists = {
             {"13_2", true},
             {"13_3", true}
         },
-        interval = 3.5
+        interval = 1.75
     },
     Buy_Stardust = {
         autoFlag = "Buy_Stardust",
@@ -162,7 +162,7 @@ local buyLists = {
             {"15_7", True},
             {"15_6", True}
         },
-        interval = 2
+        interval = 2.25
     }
 }
 
