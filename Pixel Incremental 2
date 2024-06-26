@@ -132,10 +132,12 @@ local buyLists = {
             {"11_1", true},
             {"11_2", true},
             {"11_5", true},
+            {"11_6", true},
             {"12_2", true},
-            {"13_2", true}
+            {"13_2", true},
+            {"13_3", true}
         },
-        interval = 5
+        interval = 3.5
     }
 }
 
