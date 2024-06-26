@@ -155,6 +155,22 @@ local function Farm()
     end
 end
 
+local function Farm2()
+    local humanoidRootPart = LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+    local humanoid = LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("Humanoid")
+
+    if not humanoidRootPart or not humanoid then return end
+
+    while _G.Auto_Farm2 do
+        humanoidRootPart.CFrame = CFrame.new(game:GetService("Workspace").Scrap.Button.Touch.CFrame.Position + Vector3.new(0, 1, 0))
+        humanoid:ChangeState(Enum.HumanoidStateType.GettingUp)
+        task.wait(10)
+        humanoidRootPart.CFrame = CFrame.new(game:GetService("Workspace").FactoryConveyor.Spawn.Touch.CFrame.Position + Vector3.new(0, 1, 0))
+        humanoid:ChangeState(Enum.HumanoidStateType.GettingUp)
+        task.wait(20)
+    end
+end
+
 local ui = Library:NewWindow("Pixel Incremental 2")
 local a = ui:NewSection("Farm")
 local b = ui:NewSection("Buy")
@@ -177,7 +193,14 @@ a:CreateButton("Spend Color equally", function(value)
     Color()
 end)
 
-a:CreateToggle("Auto Farm", function(value)
+a:CreateToggle("Farm Rune/Research", function(value)
+    _G.Auto_Farm = value
+    if value then
+        Farm()
+    end
+end)
+
+a:CreateToggle("Farm Rune/Scrap", function(value)
     _G.Auto_Farm = value
     if value then
         Farm()
@@ -185,10 +208,10 @@ a:CreateToggle("Auto Farm", function(value)
 end)
 
 local order = {
+    "Auto_Buy_RNG",
     "Auto_Buy_Pixel",
     "Auto_Buy_Prestige",
     "Auto_Buy_Click",
-    "Auto_Buy_RNG",
     "Auto_Buy_Gems",
     "Auto_Buy_Research",
     "Auto_Buy_Scrap"
