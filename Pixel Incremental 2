@@ -24,8 +24,8 @@ local function spendColor(color, amount, times)
     end
 end
 
-local function Collect()
-    while _G.Auto_Collect do
+local function Collect_Pixel()
+    while _G.Auto_Collect_Pixel do
         for _, Drop in pairs(game:GetService("Workspace").Pixels:GetChildren()) do
             if Drop:IsA("BasePart") then
                 Drop.CFrame = LocalPlayer.Character.HumanoidRootPart.CFrame
@@ -34,6 +34,18 @@ local function Collect()
         task.wait(0.1)
     end
 end
+
+local function Collect_Stardust()
+    while _G.Auto_Collect_Stardust do
+        for _, Drop in pairs(game:GetService("Workspace").Stardust:GetChildren()) do
+            if Drop:IsA("BasePart") then
+                Drop.CFrame = LocalPlayer.Character.HumanoidRootPart.CFrame
+            end
+        end
+        task.wait(0.1)
+    end
+end
+
 
 local function Click()
     while _G.Auto_Click do
@@ -177,10 +189,17 @@ local ui = Library:NewWindow("Pixel Incremental 2")
 local a = ui:NewSection("Farm")
 local b = ui:NewSection("Buy")
 
-a:CreateToggle("Auto Collect", function(value)
-    _G.Auto_Collect = value
+a:CreateToggle("Auto Collect Pixel", function(value)
+    _G.Auto_Collect_Pixel = value
     if value then
-        Collect()
+        Collect_Pixel()
+    end
+end)
+
+a:CreateToggle("Auto Collect Sratdust", function(value)
+    _G.Auto_Collect_Stardust = value
+    if value then
+        Collect_Stardust()
     end
 end)
 
