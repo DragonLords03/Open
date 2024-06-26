@@ -201,9 +201,9 @@ a:CreateToggle("Farm Rune/Research", function(value)
 end)
 
 a:CreateToggle("Farm Rune/Scrap", function(value)
-    _G.Auto_Farm = value
+    _G.Auto_Farm2 = value
     if value then
-        Farm()
+        Farm2()
     end
 end)
 
