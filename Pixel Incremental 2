@@ -110,16 +110,16 @@ local buyLists = {
     Auto_Buy_Research = {
         autoFlag = "Auto_Buy_Research",
         upgrades = {
-            {"7_3", true},
             {"7_1", true},
-            {"7_6", true},
+            {"7_3", true},
             {"7_4", true},
+            {"7_6", true},
             {"7_8", true},
+            {"7_12", true},
             {"7_11", true},
             {"7_16", true},
-            {"7_17", true},
-            {"7_12", true},
             {"7_13", true},
+            {"7_17", true},
             {"7_19", true},
             {"7_21", true},
             {"7_24", true}
