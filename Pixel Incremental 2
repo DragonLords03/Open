@@ -228,10 +228,6 @@ a:CreateToggle("Auto Click", function(value)
     end
 end)
 
-a:CreateButton("Spend Color equally", function(value)
-    Color()
-end)
-
 a:CreateToggle("Farm Rune/Research", function(value)
     _G.Auto_Farm = value
     if value then
@@ -270,3 +266,7 @@ for _, key in ipairs(order) do
         end)
     end
 end
+
+b:CreateButton("Spend Color equally", function(value)
+    Color()
+end)
