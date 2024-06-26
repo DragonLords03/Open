@@ -178,12 +178,16 @@ local function Farm()
     if not humanoidRootPart or not humanoid then return end
 
     while _G.Auto_Farm do
-        humanoidRootPart.CFrame = CFrame.new(game:GetService("Workspace").Research.Button.Touch.CFrame.Position + Vector3.new(0, 1, 0))
+        humanoidRootPart.CFrame = CFrame.new(game:GetService("Workspace").Research.Button.Touch.CFrame.Position + Vector3.new(0, 2, 0))
         humanoid:ChangeState(Enum.HumanoidStateType.GettingUp)
         task.wait(1)
-        humanoidRootPart.CFrame = CFrame.new(game:GetService("Workspace").Runes.Button.Touch.CFrame.Position + Vector3.new(0, 1, 0))
+
+        humanoidRootPart.CFrame = CFrame.new(game:GetService("Workspace").Runes.Button.Touch.CFrame.Position + Vector3.new(0, 2, 0))
         humanoid:ChangeState(Enum.HumanoidStateType.GettingUp)
-        task.wait(59)
+        for i = 1, 59 do
+            if not _G.Auto_Farm then return end
+            task.wait(1)
+        end
     end
 end
 
@@ -194,14 +198,45 @@ local function Farm2()
     if not humanoidRootPart or not humanoid then return end
 
     while _G.Auto_Farm2 do
-        humanoidRootPart.CFrame = CFrame.new(game:GetService("Workspace").Runes.Button.Touch.CFrame.Position + Vector3.new(0, 1, 0))
+        humanoidRootPart.CFrame = CFrame.new(game:GetService("Workspace").Runes.Button.Touch.CFrame.Position + Vector3.new(0, 2, 0))
         humanoid:ChangeState(Enum.HumanoidStateType.GettingUp)
-        task.wait(20)
-        humanoidRootPart.CFrame = CFrame.new(game:GetService("Workspace").FactoryConveyor.Spawn.Touch.CFrame.Position + Vector3.new(0, 1, 0))
+        for i = 1, 20 do
+            if not _G.Auto_Farm2 then return end
+            task.wait(1)
+        end
+
+        humanoidRootPart.CFrame = CFrame.new(game:GetService("Workspace").FactoryConveyor.Spawn.Touch.CFrame.Position + Vector3.new(0, 2, 0))
         humanoid:ChangeState(Enum.HumanoidStateType.GettingUp)
-        task.wait(40)
+        for i = 1, 40 do
+            if not _G.Auto_Farm2 then return end
+            task.wait(1)
+        end
     end
 end
+
+local function Farm3()
+    local humanoidRootPart = LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+    local humanoid = LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("Humanoid")
+
+    if not humanoidRootPart or not humanoid then return end
+
+    while _G.Auto_Farm3 do
+        humanoidRootPart.CFrame = CFrame.new(game:GetService("Workspace").Runes.Button.Touch.CFrame.Position + Vector3.new(0, 2, 0))
+        humanoid:ChangeState(Enum.HumanoidStateType.GettingUp)
+        for i = 1, 20 do
+            if not _G.Auto_Farm3 then return end
+            task.wait(1)
+        end
+
+        humanoidRootPart.CFrame = CFrame.new(game:GetService("Workspace").Roll.Button.Touch.CFrame.Position + Vector3.new(0, 2, 0))
+        humanoid:ChangeState(Enum.HumanoidStateType.GettingUp)
+        for i = 1, 40 do
+            if not _G.Auto_Farm3 then return end
+            task.wait(1)
+        end
+    end
+end
+
 
 local ui = Library:NewWindow("Pixel Incremental 2")
 local a = ui:NewSection("Auto")
@@ -226,6 +261,13 @@ a:CreateToggle("Auto Click", function(value)
     _G.Auto_Click = value
     if value then
         Click()
+    end
+end)
+
+c:CreateToggle("Farm Rune/Tier", function(value)
+    _G.Auto_Farm3 = value
+    if value then
+        Farm3()
     end
 end)
 
