@@ -154,13 +154,13 @@ local buyLists = {
     Buy_Stardust = {
         autoFlag = "Buy_Stardust",
         upgrades = {
-            {"15_1", True},
-            {"15_5", True},
-            {"15_3", True},
-            {"15_4", True},
-            {"15_2", True},
-            {"15_7", True},
-            {"15_6", True}
+            {"15_1", true},
+            {"15_5", true},
+            {"15_3", true},
+            {"15_4", true},
+            {"15_2", true},
+            {"15_7", true},
+            {"15_6", true}
         },
         interval = 2.25
     }
