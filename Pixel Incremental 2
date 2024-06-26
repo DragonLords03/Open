@@ -131,25 +131,29 @@ local buyLists = {
             {"7_11", true},
             {"7_16", true},
             {"7_13", true},
+            {"7_15", true},
             {"7_17", true},
             {"7_19", true},
+            {"7_22", true},
             {"7_21", true},
             {"7_24", true}
         },
-        interval = 0.75
+        interval = 1
     },
     Buy_Scrap = {
         autoFlag = "Buy_Scrap",
         upgrades = {
             {"11_1", true},
             {"11_2", true},
+            {"11_3", true},
             {"11_5", true},
             {"11_6", true},
             {"12_2", true},
+            {"12_3", true},
             {"13_2", true},
             {"13_3", true}
         },
-        interval = 1.75
+        interval = 1.25
     },
     Buy_Stardust = {
         autoFlag = "Buy_Stardust",
