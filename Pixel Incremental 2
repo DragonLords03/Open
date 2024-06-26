@@ -136,7 +136,8 @@ local buyLists = {
             {"7_19", true},
             {"7_22", true},
             {"7_21", true},
-            {"7_24", true}
+            {"7_24", true},
+            {"7_26", true}
         },
         interval = 0.99
     },
