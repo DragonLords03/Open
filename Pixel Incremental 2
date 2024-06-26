@@ -205,7 +205,7 @@ end
 
 local ui = Library:NewWindow("Pixel Incremental 2")
 local a = ui:NewSection("Auto")
-local b = ui:NewSection("Auto Buy")
+local b = ui:NewSection("Buy")
 local c = ui:NewSection("Farm")
 
 a:CreateToggle("Auto Collect Pixel", function(value)
