@@ -138,7 +138,7 @@ local buyLists = {
             {"7_21", true},
             {"7_24", true}
         },
-        interval = 1
+        interval = 0.99
     },
     Buy_Scrap = {
         autoFlag = "Buy_Scrap",
