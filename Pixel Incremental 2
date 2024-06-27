@@ -164,7 +164,7 @@ local buyLists = {
             {"15_3", true},
             {"15_4", true},
             {"15_2", true},
-            {"15_6", true}
+            {"15_7", true}
         },
         interval = 2.25
     }
